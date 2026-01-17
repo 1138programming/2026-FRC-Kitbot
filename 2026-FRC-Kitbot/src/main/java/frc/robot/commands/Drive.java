@@ -25,8 +25,11 @@ public class Drive extends Command {
     addRequirements(drive);
   }
 
-  public double addDeadzone(double input){
-    return input > kDEADZONE ? input : 0.0;
+  public double applyDeadZone(double input) {
+    if (Math.abs(input - 0.5) >= kDEADZONE) {
+      return input;
+    }
+    return 0.0;
   }
 
   // Called when the command is initially scheduled.
@@ -36,11 +39,13 @@ public class Drive extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double leftY = addDeadzone(Robot.m_robotContainer.getLeftY());
-    double rightY = addDeadzone(Robot.m_robotContainer.getRightY());
-    
+    double leftY = applyDeadZone(Robot.m_robotContainer.getLeftY());
+    double rightY = applyDeadZone(Robot.m_robotContainer.getRightY());
+
     drivetrain.runDifferentialDriveTrain(leftY, rightY);
   }
+
+  
 
   // Called once the command ends or is interrupted.
   @Override

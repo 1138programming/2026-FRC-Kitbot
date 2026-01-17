@@ -43,7 +43,6 @@ public class Drivetrain extends SubsystemBase {
 
   private double convertInputToPower(double input) {
     return (input - 0.5) * 2;
-
   }
 
   public void runDifferentialDriveTrain(double leftY, double rightY) {
