@@ -4,7 +4,7 @@
 
 package frc.robot.commands;
 
-
+import frc.robot.Robot;
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -13,13 +13,11 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 public class Drive extends Command {
   /** Creates a new Drive. */
   Drivetrain drivetrain;
-  CommandXboxController driverController;
   
 
-  public Drive(Drivetrain drive, CommandXboxController driverController) {
+  public Drive(Drivetrain drive) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.drivetrain = drive;
-    this.driverController = driverController;
     addRequirements(drive);
   }
 
@@ -30,9 +28,9 @@ public class Drive extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double lStickInput = driverController.getLeftY();
-    double rStickInput = driverController.getRightY();
-    drivetrain.runDifferentialDriveTrain(lStickInput, rStickInput);
+    double leftY = Robot.m_robotContainer.getLeftY();
+    double rightY = Robot.m_robotContainer.getRightY();
+    drivetrain.runDifferentialDriveTrain(leftY, rightY);
   }
 
   // Called once the command ends or is interrupted.

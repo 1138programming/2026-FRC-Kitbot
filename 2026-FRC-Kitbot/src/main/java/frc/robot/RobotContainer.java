@@ -14,7 +14,6 @@ import frc.robot.subsystems.FuelManipulator;
 import static frc.robot.Constants.OperatorConstants.*;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -33,8 +32,9 @@ public class RobotContainer {
   private final CommandXboxController driveController = new CommandXboxController(kDriverControllerPort);
   private final CommandXboxController operatorController = new CommandXboxController(kOperatorControllerPort);
 
-  private final Drive drive = new Drive(drivetrain, driveController);
+  private final Drive drive = new Drive(drivetrain);
   private final FuelCommand fuelMove = new FuelCommand(manipulator, operatorController, kIntakePower);
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -63,6 +63,14 @@ public class RobotContainer {
     //m_driverController.b().whileTrue(drivetrain.exampleMAuethodCommand());
     operatorController.b().whileTrue(fuelMove);
     drivetrain.setDefaultCommand(drive);
+  }
+
+  public double getLeftY() {
+    return driveController.getLeftY();
+  }
+
+  public double getRightY() {
+    return driveController.getRightY();
   }
 
   /**
