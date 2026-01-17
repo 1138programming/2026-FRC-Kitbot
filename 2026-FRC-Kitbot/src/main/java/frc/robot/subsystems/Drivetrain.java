@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import static frc.robot.Constants.OperatorConstants.*;
 import com.revrobotics.spark.SparkMax;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase; 
 import com.revrobotics.spark.SparkLowLevel.*;
 
@@ -43,10 +44,7 @@ public class Drivetrain extends SubsystemBase {
   }
 
   private double convertInputToPower(double input) {
-    if (input <= 0.5) {
-      return -(input * 2); //the input is between 0-1 so we multiply by two bc the motor accepts a power between -1 and 1
-    }
-    return input * 2;
+    return (input - 0.5) * 2;
 
   }
 
@@ -61,5 +59,6 @@ public class Drivetrain extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    
   }
 }

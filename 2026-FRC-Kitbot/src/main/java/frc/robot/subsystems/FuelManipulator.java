@@ -10,13 +10,13 @@ import com.revrobotics.spark.SparkLowLevel.*;
 import static frc.robot.Constants.OperatorConstants.*;
 
 
-public class Conveyor extends SubsystemBase {
+public class FuelManipulator extends SubsystemBase {
 
   SparkMax conveyerMotorOne;
   SparkMax conveyerMotorTwo;
 
   /** Creates a new Intake. */
-  public Conveyor() {
+  public FuelManipulator() {
     conveyerMotorOne = new SparkMax(KintakeMotorID, MotorType.kBrushed);
     conveyerMotorTwo = new SparkMax(KintakeMotorID, MotorType.kBrushed);
   }

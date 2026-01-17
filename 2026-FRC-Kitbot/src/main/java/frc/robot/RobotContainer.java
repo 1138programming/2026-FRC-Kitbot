@@ -7,11 +7,11 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants.*;
 import frc.robot.commands.Autos;
 import frc.robot.commands.Drive;
+import frc.robot.commands.FuelCommand;
 import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.Conveyor;
+import frc.robot.subsystems.FuelManipulator;
 
-import static frc.robot.Constants.OperatorConstants.kDriverControllerPort;
-import static frc.robot.Constants.OperatorConstants.kOperatorControllerPort;
+import static frc.robot.Constants.OperatorConstants.*;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
@@ -28,12 +28,13 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final Drivetrain drivetrain = new Drivetrain();
-  private final Conveyor conveyor = new Conveyor();
+  private final FuelManipulator manipulator = new FuelManipulator();
   
   private final CommandXboxController driveController = new CommandXboxController(kDriverControllerPort);
   private final CommandXboxController operatorController = new CommandXboxController(kOperatorControllerPort);
 
   private final Drive drive = new Drive(drivetrain, driveController);
+  private final FuelCommand fuelMove = new FuelCommand(manipulator, operatorController, kIntakePower);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -60,7 +61,7 @@ public class RobotContainer {
     // // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // // cancelling on release.
     //m_driverController.b().whileTrue(drivetrain.exampleMAuethodCommand());
-    
+    operatorController.b().whileTrue(fuelMove);
     drivetrain.setDefaultCommand(drive);
   }
 
