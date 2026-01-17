@@ -5,27 +5,25 @@
 package frc.robot.subsystems;
 
 import static frc.robot.Constants.OperatorConstants.*;
-import com.revrobotics.spark.SparkMax;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.SubsystemBase; 
-import com.revrobotics.spark.SparkLowLevel.*;
+import com.ctre.phoenix6.hardware.TalonFX;
 
 
 public class Drivetrain extends SubsystemBase {
 
-  SparkMax frontLMotor;
-  SparkMax backLMotor;
-  SparkMax frontRMotor;
-  SparkMax backRMotor;
+  TalonFX frontLMotor;
+  TalonFX backLMotor;
+  TalonFX frontRMotor;
+  TalonFX backRMotor;
 
 
   /** Creates a new Drivetrain. */
   public Drivetrain() {
-    frontLMotor = new SparkMax(KfrontLMotorID, MotorType.kBrushed);
-    backLMotor = new SparkMax(KbackLMotorID, MotorType.kBrushed);
-    frontRMotor = new SparkMax(KfrontRMotorID, MotorType.kBrushed);
-    backRMotor = new SparkMax(KbackRMotorID, MotorType.kBrushed);
+    frontLMotor = new TalonFX(KfrontLMotorID);
+    backLMotor = new TalonFX(KbackLMotorID);
+    frontRMotor = new TalonFX(KfrontRMotorID);
+    backRMotor = new TalonFX(KbackRMotorID);
   }
 
   public void runLeftMotorGroup(double power) {

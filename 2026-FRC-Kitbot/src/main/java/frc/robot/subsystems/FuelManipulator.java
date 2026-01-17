@@ -3,22 +3,20 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.subsystems;
-
-import com.revrobotics.spark.SparkMax;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import com.revrobotics.spark.SparkLowLevel.*;
+import com.ctre.phoenix6.hardware.TalonFX;
 import static frc.robot.Constants.OperatorConstants.*;
 
 
 public class FuelManipulator extends SubsystemBase {
 
-  SparkMax conveyerMotorOne;
-  SparkMax conveyerMotorTwo;
+  TalonFX conveyerMotorOne;
+  TalonFX conveyerMotorTwo;
 
   /** Creates a new Intake. */
   public FuelManipulator() {
-    conveyerMotorOne = new SparkMax(KintakeMotorID, MotorType.kBrushed);
-    conveyerMotorTwo = new SparkMax(KintakeMotorID, MotorType.kBrushed);
+    conveyerMotorOne = new TalonFX(KintakeMotorID);
+    conveyerMotorTwo = new TalonFX(KintakeMotorID);
   }
 
   public void runIntake(double power) {
