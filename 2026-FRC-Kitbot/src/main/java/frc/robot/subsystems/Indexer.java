@@ -8,19 +8,17 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import static frc.robot.Constants.OperatorConstants.*;
 
 
-public class FuelManipulator extends SubsystemBase {
-
-  TalonFX conveyerMotorOne;
-
-  /** Creates a new Intake. */
-  public FuelManipulator() {
-    conveyerMotorOne = new TalonFX(KintakeMotorOneID);
+public class Indexer extends SubsystemBase {
+  TalonFX indexer;
+  /** Creates a new Indexer. */
+  public Indexer() {
+    indexer = new TalonFX(KindexerID);
   }
 
-  public void runIntake(double power) {
-    conveyerMotorOne.set(power);
+  public void runIndex(double power) {
+    indexer.set(power);
   }
-
+    
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

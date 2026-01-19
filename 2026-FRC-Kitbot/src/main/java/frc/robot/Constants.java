@@ -19,13 +19,15 @@ public final class Constants {
 
     public static final double kDEADZONE = 0.05;
 
-    public static final int KfrontLMotorID = 1;
-    public static final int KbackLMotorID = 2;
-    public static final int KfrontRMotorID = 3;
-    public static final int KbackRMotorID = 4;
+    public static final int KfrontLMotorID = 11;
+    public static final int KbackLMotorID = 13;
+    public static final int KfrontRMotorID = 14;
+    public static final int KbackRMotorID = 12;
 
-    public static final int KintakeMotorID = 5;
+    public static final int KintakeMotorOneID = 15; //Fuel Manipulator
+    public static final int KindexerID = 10; //indexer
 
     public static final double kIntakePower = 3.0;
+    public static final double kIndexPower = 3.0;
   }
 }

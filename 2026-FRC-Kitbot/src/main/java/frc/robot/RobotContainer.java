@@ -8,8 +8,10 @@ import frc.robot.Constants.OperatorConstants.*;
 import frc.robot.commands.Autos;
 import frc.robot.commands.Drive;
 import frc.robot.commands.FuelCommand;
+import frc.robot.commands.IndexerCommand;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.FuelManipulator;
+import frc.robot.subsystems.Indexer;
 
 import static frc.robot.Constants.OperatorConstants.*;
 
@@ -28,12 +30,14 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final Drivetrain drivetrain = new Drivetrain();
   private final FuelManipulator manipulator = new FuelManipulator();
+  private final Indexer index = new Indexer();
   
   private final CommandXboxController driveController = new CommandXboxController(kDriverControllerPort);
   private final CommandXboxController operatorController = new CommandXboxController(kOperatorControllerPort);
 
   private final Drive drive = new Drive(drivetrain);
   private final FuelCommand fuelMove = new FuelCommand(manipulator, operatorController, kIntakePower);
+  private final IndexerCommand indexer = new IndexerCommand(index, kIndexPower);
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -62,6 +66,7 @@ public class RobotContainer {
     // // cancelling on release.
     //m_driverController.b().whileTrue(drivetrain.exampleMAuethodCommand());
     operatorController.b().whileTrue(fuelMove);
+    operatorController.a().whileTrue(indexer);
     drivetrain.setDefaultCommand(drive);
   }
 
