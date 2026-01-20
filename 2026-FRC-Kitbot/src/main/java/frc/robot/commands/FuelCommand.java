@@ -4,7 +4,7 @@
 
 package frc.robot.commands;
 import frc.robot.subsystems.FuelManipulator;
-
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
@@ -12,10 +12,10 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 public class FuelCommand extends Command {
   /** Creates a new FuelCommand. */
   FuelManipulator manipulator;
-  CommandXboxController controller;
+  Joystick controller;
   double power;
 
-  public FuelCommand(FuelManipulator manipulator, CommandXboxController operatorController, double power) {
+  public FuelCommand(FuelManipulator manipulator, Joystick operatorController, double power) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.manipulator = manipulator;
     this.controller = operatorController;

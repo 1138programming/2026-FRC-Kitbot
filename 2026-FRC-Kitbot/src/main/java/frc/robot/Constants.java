@@ -14,7 +14,7 @@ package frc.robot;
  */
 public final class Constants {
   public static class OperatorConstants {
-    public static final int kDriverControllerPort = 0;
+    public static final int KLogitechPort = 0;
     public static final int kOperatorControllerPort = 1;
 
     public static final double kDEADZONE = 0.05;
@@ -29,5 +29,16 @@ public final class Constants {
 
     public static final double kIntakePower = 3.0;
     public static final double kIndexPower = 3.0;
+
+    public static final int KLogitechButtonX = 1;
+    public static final int KLogitechButtonA = 2;
+    public static final int KLogitechButtonB = 3;
+    public static final int KLogitechButtonY = 4;
+    public static final int KLogitechLeftBumper = 5;
+    public static final int KLogitechRightBumper = 6;
+    public static final int KLogitechLeftTrigger = 7;
+    public static final int KLogitechRightTrigger = 8;
+    public static final int KLogitechBtnBack = 9;
+    public static final int KLogitechRightStart = 10;
   }
 }

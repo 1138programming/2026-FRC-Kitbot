@@ -41,13 +41,12 @@ public class Drivetrain extends SubsystemBase {
     runRightMotorGroup(power);
   }
 
-  private double convertInputToPower(double input) {
-    return (input - 0.5) * 2;
-  }
 
   public void runDifferentialDriveTrain(double leftY, double rightY) {
-    double leftPower = convertInputToPower(leftY);
-    double rightPower = convertInputToPower(rightY);
+    double leftPower = leftY;
+    double rightPower = rightY;
+    System.out.println(leftPower);
+    System.out.println(rightPower);
 
     runLeftMotorGroup(leftPower);
     runRightMotorGroup(rightPower);

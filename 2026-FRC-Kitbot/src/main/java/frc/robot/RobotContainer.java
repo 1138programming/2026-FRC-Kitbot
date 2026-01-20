@@ -15,9 +15,10 @@ import frc.robot.subsystems.Indexer;
 
 import static frc.robot.Constants.OperatorConstants.*;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
@@ -32,11 +33,24 @@ public class RobotContainer {
   private final FuelManipulator manipulator = new FuelManipulator();
   private final Indexer index = new Indexer();
   
-  private final CommandXboxController driveController = new CommandXboxController(kDriverControllerPort);
-  private final CommandXboxController operatorController = new CommandXboxController(kOperatorControllerPort);
+    Joystick logitech = new Joystick(KLogitechPort); // Logitech Dual Action
+    
+
+    // Logitch Buttons
+    JoystickButton logitechBtnX = new JoystickButton(logitech, KLogitechButtonX);
+    JoystickButton logitechBtnA = new JoystickButton(logitech, KLogitechButtonA);
+    JoystickButton logitechBtnB = new JoystickButton(logitech, KLogitechButtonB);
+    JoystickButton logitechBtnY = new JoystickButton(logitech, KLogitechButtonY);
+    JoystickButton logitechBtnLB = new JoystickButton(logitech, KLogitechLeftBumper);
+    JoystickButton logitechBtnRB = new JoystickButton(logitech, KLogitechRightBumper);
+    JoystickButton logitechBtnLT = new JoystickButton(logitech, KLogitechLeftTrigger);
+    JoystickButton logitechBtnRT = new JoystickButton(logitech, KLogitechRightTrigger);
+    JoystickButton logitechBtnBack = new JoystickButton(logitech, KLogitechBtnBack);
+    JoystickButton logitechBtnStart = new JoystickButton(logitech, KLogitechRightStart);
+    
 
   private final Drive drive = new Drive(drivetrain);
-  private final FuelCommand fuelMove = new FuelCommand(manipulator, operatorController, kIntakePower);
+  private final FuelCommand fuelMove = new FuelCommand(manipulator, logitech, kIntakePower);
   private final IndexerCommand indexer = new IndexerCommand(index, kIndexPower);
 
 
@@ -65,18 +79,18 @@ public class RobotContainer {
     // // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // // cancelling on release.
     //m_driverController.b().whileTrue(drivetrain.exampleMAuethodCommand());
-    operatorController.b().whileTrue(fuelMove);
-    operatorController.a().whileTrue(indexer);
+    // logitechBtnX.whileTrue(drive);
+    // operatorController.a().whileTrue(indexer);
     drivetrain.setDefaultCommand(drive);
   }
 
   public double getLeftY() {
-    return driveController.getLeftY();
+    return logitech.getY();
   }
 
   public double getRightY() {
-    return driveController.getRightY();
-  }
+    return logitech.getRawAxis(5);
+  } 
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
