@@ -7,33 +7,38 @@ package frc.robot.subsystems;
 import static frc.robot.Constants.OperatorConstants.*;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix6.hardware.TalonFX;
 
 
 public class Drivetrain extends SubsystemBase {
 
-  TalonFX frontLMotor;
-  TalonFX backLMotor;
-  TalonFX frontRMotor;
-  TalonFX backRMotor;
+  TalonSRX frontLMotor;
+  TalonSRX backLMotor;
+  TalonSRX frontRMotor;
+  TalonSRX backRMotor;
+
+  
 
 
   /** Creates a new Drivetrain. */
   public Drivetrain() {
-    frontLMotor = new TalonFX(KfrontLMotorID);
-    backLMotor = new TalonFX(KbackLMotorID);
-    frontRMotor = new TalonFX(KfrontRMotorID);
-    backRMotor = new TalonFX(KbackRMotorID);
+    frontLMotor = new TalonSRX(KfrontLMotorID);
+    backLMotor = new TalonSRX(KbackLMotorID);
+    frontRMotor = new TalonSRX(KfrontRMotorID);
+    backRMotor = new TalonSRX(KbackRMotorID);
   }
 
   public void runLeftMotorGroup(double power) {
-    frontLMotor.set(power);
-    backLMotor.set(power);
+    frontLMotor.set(ControlMode.PercentOutput, power);
+    backLMotor.set(ControlMode.PercentOutput, power);
+   
   }
 
   public void runRightMotorGroup(double power) {
-    frontRMotor.set(power);
-    backRMotor.set(power);
+    frontRMotor.set(ControlMode.PercentOutput, power);
+    backRMotor.set(ControlMode.PercentOutput, power);
   }
 
   public void driveForward(double power) {
@@ -43,10 +48,10 @@ public class Drivetrain extends SubsystemBase {
 
 
   public void runDifferentialDriveTrain(double leftY, double rightY) {
-    double leftPower = leftY;
-    double rightPower = rightY;
-    System.out.println(leftPower);
-    System.out.println(rightPower);
+    double leftPower = -leftY;
+    double rightPower = -rightY;
+    // System.out.println(leftPower);
+    // System.out.println(rightPower);
 
     runLeftMotorGroup(leftPower);
     runRightMotorGroup(rightPower);

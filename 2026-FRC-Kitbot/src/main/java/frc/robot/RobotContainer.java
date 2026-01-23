@@ -72,6 +72,7 @@ public class RobotContainer {
    */
 
   private void configureBindings() {
+    
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     // new Trigger(drivetrain::exampleCondition)
     //     .onTrue(new ExampleCommand(drivetrain));
@@ -85,7 +86,7 @@ public class RobotContainer {
   }
 
   public double getLeftY() {
-    return logitech.getY();
+    return logitech.getRawAxis(1);
   }
 
   public double getRightY() {

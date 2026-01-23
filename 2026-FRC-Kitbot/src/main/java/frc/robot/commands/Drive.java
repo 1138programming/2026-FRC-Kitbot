@@ -43,7 +43,7 @@ public class Drive extends Command {
     double rightY = Robot.m_robotContainer.getRightY();
     
     drivetrain.runDifferentialDriveTrain(leftY, rightY);
-    System.out.println("Running Execute");
+    // System.out.println("Running Execute");
   }
 
   
