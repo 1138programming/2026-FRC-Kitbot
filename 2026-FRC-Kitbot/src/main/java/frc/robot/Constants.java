@@ -19,16 +19,16 @@ public final class Constants {
 
     public static final double kDEADZONE = 0.05;
 
-    public static final int KfrontLMotorID = ;
+    public static final int KfrontLMotorID = 4;
     public static final int KbackLMotorID = 10;
-    public static final int KfrontRMotorID = ;
-    public static final int KbackRMotorID = ;
+    public static final int KfrontRMotorID = 5;
+    public static final int KbackRMotorID = 1;
 
-    public static final int KintakeMotorOneID = ;
-    public static final int KindexerID = ;
+    public static final int KintakeMotorOneID = 3;
+    public static final int KindexerID = 2;
 
-    public static final double kIntakePower = 3.0;
-    public static final double kIndexPower = 3.0;
+    public static final double kIntakePower = 1.0;
+    public static final double kIndexPower = 1.0;
 
     public static final int KLogitechButtonX = 1;
     public static final int KLogitechButtonA = 2;
