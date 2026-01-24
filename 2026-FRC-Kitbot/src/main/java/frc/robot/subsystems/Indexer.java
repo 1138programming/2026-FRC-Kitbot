@@ -4,19 +4,22 @@
 
 package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import com.ctre.phoenix6.hardware.TalonFX;
 import static frc.robot.Constants.OperatorConstants.*;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 
 public class Indexer extends SubsystemBase {
-  TalonFX indexer;
+  TalonSRX indexer;
   /** Creates a new Indexer. */
   public Indexer() {
-    indexer = new TalonFX(KindexerID);
+    indexer = new TalonSRX(KindexerID);
   }
 
   public void runIndex(double power) {
-    indexer.set(power);
+    indexer.set(ControlMode.PercentOutput,power);
   }
     
   @Override

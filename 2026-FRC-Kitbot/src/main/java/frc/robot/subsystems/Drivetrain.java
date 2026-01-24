@@ -9,8 +9,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix6.hardware.TalonFX;
-
 
 public class Drivetrain extends SubsystemBase {
 
@@ -49,7 +47,7 @@ public class Drivetrain extends SubsystemBase {
 
   public void runDifferentialDriveTrain(double leftY, double rightY) {
     double leftPower = -leftY;
-    double rightPower = -rightY;
+    double rightPower = rightY;
     // System.out.println(leftPower);
     // System.out.println(rightPower);
 

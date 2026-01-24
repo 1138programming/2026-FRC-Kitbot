@@ -39,8 +39,8 @@ public class Drive extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double leftY = Robot.m_robotContainer.getLeftY();
-    double rightY = Robot.m_robotContainer.getRightY();
+    double leftY = Robot.m_robotContainer.getLeftsY();
+    double rightY = Robot.m_robotContainer.getRightsY();
     
     drivetrain.runDifferentialDriveTrain(leftY, rightY);
     // System.out.println("Running Execute");

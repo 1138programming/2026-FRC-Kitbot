@@ -27,8 +27,10 @@ public final class Constants {
     public static final int KintakeMotorOneID = 3;
     public static final int KindexerID = 2;
 
-    public static final double kIntakePower = 1.0;
-    public static final double kIndexPower = 1.0;
+    public static final double kIntakePowerIn = 0.55;
+    public static final double kIntakePowerOut = 1.0;
+    public static final double kIndexPowerIn = 1.0;
+    public static final double kIndexPowerOut = -1.0;
 
     public static final int KLogitechButtonX = 1;
     public static final int KLogitechButtonA = 2;
@@ -40,5 +42,6 @@ public final class Constants {
     public static final int KLogitechRightTrigger = 8;
     public static final int KLogitechBtnBack = 9;
     public static final int KLogitechRightStart = 10;
+    public static final int KLogitechDPADUp = 11;
   }
 }

@@ -4,21 +4,23 @@
 
 package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import com.ctre.phoenix6.hardware.TalonFX;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import static frc.robot.Constants.OperatorConstants.*;
 
 
 public class FuelManipulator extends SubsystemBase {
 
-  TalonFX conveyerMotorOne;
+  TalonSRX conveyerMotorOne;
 
   /** Creates a new Intake. */
   public FuelManipulator() {
-    conveyerMotorOne = new TalonFX(KintakeMotorOneID);
+    conveyerMotorOne = new TalonSRX(KintakeMotorOneID);
   }
 
   public void runIntake(double power) {
-    conveyerMotorOne.set(power);
+    conveyerMotorOne.set(ControlMode.PercentOutput, power);
   }
 
   @Override

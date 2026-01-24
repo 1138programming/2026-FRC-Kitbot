@@ -15,6 +15,8 @@ import frc.robot.subsystems.Indexer;
 
 import static frc.robot.Constants.OperatorConstants.*;
 
+import java.security.spec.PSSParameterSpec;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -33,7 +35,7 @@ public class RobotContainer {
   private final FuelManipulator manipulator = new FuelManipulator();
   private final Indexer index = new Indexer();
   
-    Joystick logitech = new Joystick(KLogitechPort); // Logitech Dual Action
+  Joystick logitech = new Joystick(KLogitechPort); // Logitech Dual Action
     
 
     // Logitch Buttons
@@ -47,11 +49,13 @@ public class RobotContainer {
     JoystickButton logitechBtnRT = new JoystickButton(logitech, KLogitechRightTrigger);
     JoystickButton logitechBtnBack = new JoystickButton(logitech, KLogitechBtnBack);
     JoystickButton logitechBtnStart = new JoystickButton(logitech, KLogitechRightStart);
-    
+    JoystickButton logitechDPADUp = new JoystickButton(logitech, KLogitechDPADUp);
 
   private final Drive drive = new Drive(drivetrain);
-  private final FuelCommand fuelMove = new FuelCommand(manipulator, logitech, kIntakePower);
-  private final IndexerCommand indexer = new IndexerCommand(index, kIndexPower);
+  private final FuelCommand fuelMoveIn = new FuelCommand(manipulator, logitech, kIntakePowerIn);
+  private final FuelCommand fuelMoveOut = new FuelCommand(manipulator, logitech, kIntakePowerOut);
+  private final IndexerCommand indexerIn = new IndexerCommand(index, kIndexPowerIn);
+  private final IndexerCommand indexerOut = new IndexerCommand(index, kIndexPowerOut);
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -73,6 +77,11 @@ public class RobotContainer {
 
   private void configureBindings() {
     
+    logitechBtnRT.whileTrue(fuelMoveIn);
+    logitechBtnLT.whileTrue(fuelMoveOut);
+    logitechBtnRB.whileTrue(indexerIn);
+    logitechBtnLB.whileTrue(indexerOut);
+
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     // new Trigger(drivetrain::exampleCondition)
     //     .onTrue(new ExampleCommand(drivetrain));
@@ -82,15 +91,16 @@ public class RobotContainer {
     //m_driverController.b().whileTrue(drivetrain.exampleMAuethodCommand());
     // logitechBtnX.whileTrue(drive);
     // operatorController.a().whileTrue(indexer);
+    
     drivetrain.setDefaultCommand(drive);
   }
 
-  public double getLeftY() {
+  public double getLeftsY() {
     return logitech.getRawAxis(1);
   }
 
-  public double getRightY() {
-    return logitech.getRawAxis(5);
+  public double getRightsY() {
+    return logitech.getRawAxis(3);
   } 
 
   /**
